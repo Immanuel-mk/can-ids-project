@@ -1,0 +1,38 @@
+# =========================
+# Python system files
+# =========================
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# =========================
+# Virtual environments
+# =========================
+venv/
+.env/
+
+# =========================
+# Runtime IDS outputs
+# =========================
+results/logs/
+results/metrics/
+results/reports/
+results/alerts.json
+results/attack_sessions.json
+results/blocked_events.json
+
+# Keep graphs folder structure but not regenerated images
+results/graphs/*.png
+
+# =========================
+# CAN / simulation artifacts
+# =========================
+*.log
+*.pcap
+*.sock
+
+# =========================
+# OS noise
+# =========================
+.DS_Store

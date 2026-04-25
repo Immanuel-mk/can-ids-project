@@ -1,0 +1,4 @@
+python-can
+pandas
+numpy
+matplotlib
