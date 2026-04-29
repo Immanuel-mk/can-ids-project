@@ -97,3 +97,50 @@ Every alert includes reasoning describing:
 - Detection logic
 - Severity classification
 - Recommended interpretation
+
+## How to Run the System
+
+### Step 1: Setup Virtual CAN Interface
+
+Initialize the simulated CAN bus environment:
+
+```bash
+bash scripts/start_vcan.sh
+
+To stop the virtual CAN interface:
+
+bash scripts/stop_vcan.sh
+
+
+## Step 2: Install Dependencies
+
+### Install required Python packages:
+
+    pip install -r scripts/requirements.txt
+
+
+## Step 3: Start the CAN Simulation
+
+### Run the ECU simulation and IDS monitoring system:
+
+    python src/ecu/runner.py
+
+## Step 4: Launch Attack Simulation
+
+### Start malicious CAN traffic injection:
+    python src/attacks/attack_ecu.py
+
+## Step 5: Analyze IDS Output
+
+### Generate and review system results:
+    python scripts/generate_graphs.py
+    python scripts/analyze_alerts.py
+
+## Output Artifacts
+
+### After execution, the system generates:
+
+    results/alerts.json → detected intrusion events
+    results/attack_sessions.json → correlated attack campaigns
+    results/graphs/ → visualization of system behavior
+    
