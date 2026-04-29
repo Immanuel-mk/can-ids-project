@@ -1,21 +1,23 @@
 # CAN Bus Intrusion Detection System (CAN IDS)
 
-A Python-based automotive cybersecurity project that simulates Controller Area Network (CAN) communication between Electronic Control Units (ECUs) and detects malicious activity using anomaly detection, attack correlation, explainability, and response mechanisms.
+![Python](https://img.shields.io/badge/Python-3.11-blue)
+![Status](https://img.shields.io/badge/Status-Simulation-orange)
+![Domain](https://img.shields.io/badge/Cybersecurity-Automotive-red)
 
-## Project Overview
+---
 
-Modern vehicles rely heavily on CAN bus communication for coordination between critical ECUs such as engine control, braking systems, and gateway modules. While efficient, CAN lacks native security controls, making it vulnerable to spoofing, replay, injection, and coordinated cyberattacks.
+## Overview
 
-This project implements a simulated automotive CAN environment with an intelligent Intrusion Detection System capable of:
+This project is a **simulated automotive CAN bus intrusion detection system** designed to model, detect, and analyze cyberattacks targeting in-vehicle communication networks.
 
-- Monitoring real-time ECU traffic
-- Detecting RPM spike anomalies
-- Identifying suspicious message frequency patterns
-- Correlating attack campaigns across multiple events
-- Generating alerts with explainable reasoning
-- Triggering defensive response mechanisms
+It integrates:
+- ECU-level simulation (Engine, Brake, Gateway)
+- Attack injection framework
+- Real-time intrusion detection system (IDS)
+- Attack correlation and session tracking
+- Explainable security decision-making
 
-The system is designed to demonstrate practical automotive IDS concepts used in modern vehicular cybersecurity research.
+The system is designed for **cybersecurity research, academic evaluation, and portfolio demonstration** in automotive security domains.
 
 ## System Architecture
 
@@ -224,3 +226,29 @@ This project demonstrates how traditional automotive CAN systems can be extended
 - Interpretable security decision-making
 
 The architecture is aligned with modern automotive cybersecurity research focusing on explainable and intelligent IDS systems.
+
+## System Architecture Diagram
+
+The system is designed around a modular architecture that separates vehicle simulation, intrusion detection, and attack intelligence layers.
+
+### High-Level Flow
+
+- ECUs generate CAN messages (Engine, Brake, Gateway)
+- Attack ECU injects malicious traffic into the CAN bus
+- IDS monitors all bus traffic in real-time
+- Detection engine identifies anomalies and suspicious patterns
+- Intelligence layer correlates events into attack campaigns
+- Explainability module generates human-readable alerts
+- Visualization module produces analytical graphs
+
+### Planned Visualization
+
+The architecture diagram represents:
+
+- ECU communication flow over CAN bus
+- Attack injection points
+- IDS monitoring layer placement
+- Data flow into detection and correlation engines
+- Output pipeline (alerts, graphs, reports)
+
+
