@@ -16,3 +16,50 @@ This project implements a simulated automotive CAN environment with an intellige
 - Triggering defensive response mechanisms
 
 The system is designed to demonstrate practical automotive IDS concepts used in modern vehicular cybersecurity research.
+
+## System Architecture
+
+The simulated automotive environment consists of multiple Electronic Control Units (ECUs) communicating over a virtual CAN bus.
+
+### Core Components
+
+### Engine ECU
+Simulates engine telemetry including RPM and temperature values.
+
+### Brake ECU
+Simulates braking pressure and braking-state messages.
+
+### Gateway ECU
+Acts as the routing and communication coordination layer between simulated subsystems.
+
+### Attack ECU
+Injects malicious CAN traffic to simulate cyberattack scenarios such as spoofing and anomalous signal manipulation.
+
+### CAN IDS Core
+Monitors all bus traffic and performs anomaly detection.
+
+### Detection Engine
+Identifies:
+
+- RPM spikes
+- Frequency anomalies
+- Message irregularities
+- Coordinated suspicious event sequences
+
+### Attack Intelligence Layer
+Provides:
+
+- Attack correlation
+- Campaign tracking
+- Phase detection
+- Session analysis
+
+### Explainability Engine
+Generates interpretable reasoning for every detected anomaly.
+
+### Defensive Response Layer
+Handles:
+
+- Alert generation
+- Event logging
+- Blocking malicious activity
