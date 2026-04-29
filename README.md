@@ -144,3 +144,41 @@ bash scripts/stop_vcan.sh
     results/attack_sessions.json → correlated attack campaigns
     results/graphs/ → visualization of system behavior
     
+## Attack Scenarios
+
+The system simulates multiple CAN bus attack vectors to evaluate IDS effectiveness under realistic automotive threat conditions.
+
+### 1. RPM Spoofing Attack
+The Attack ECU injects falsified engine RPM values to simulate signal spoofing.
+
+- Target: Engine ECU
+- Effect: False engine state representation
+- Detection: Spike anomaly detection in RPM signal
+
+---
+
+### 2. Brake Pressure Manipulation
+Malicious messages modify brake pressure readings to simulate unsafe braking conditions.
+
+- Target: Brake ECU
+- Effect: Incorrect braking system state
+- Detection: Frequency + value deviation analysis
+
+---
+
+### 3. CAN Bus Flooding
+High-frequency message injection overwhelms the CAN network.
+
+- Target: Entire CAN bus
+- Effect: Message congestion and denial-of-service behavior
+- Detection: Frequency threshold violation
+
+---
+
+### 4. Coordinated Multi-Stage Attack
+Sequential injection of multiple anomalies across ECUs to simulate advanced persistent attack behavior.
+
+- Stage 1: Reconnaissance traffic injection
+- Stage 2: Signal spoofing (RPM / Brake)
+- Stage 3: Persistent flooding
+- Detection: Attack correlation engine + session tracking
