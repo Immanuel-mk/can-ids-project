@@ -182,3 +182,45 @@ Sequential injection of multiple anomalies across ECUs to simulate advanced pers
 - Stage 2: Signal spoofing (RPM / Brake)
 - Stage 3: Persistent flooding
 - Detection: Attack correlation engine + session tracking
+
+## Results Interpretation
+
+The CAN IDS is evaluated based on its ability to detect, correlate, and explain malicious activity across simulated automotive network conditions.
+
+### Detection Performance
+
+The system successfully identifies:
+
+- Sudden RPM anomalies caused by spoofing attacks
+- Brake signal inconsistencies under manipulation
+- Abnormal message frequency patterns during flooding attacks
+
+### Correlation Capability
+
+Individual suspicious events are aggregated into structured attack campaigns.
+
+This enables the system to:
+
+- Distinguish isolated anomalies from coordinated attacks
+- Group related events into attack sessions
+- Reconstruct multi-stage intrusion behavior
+
+### Explainability Output
+
+Each detected event includes a human-readable explanation:
+
+- Why the event was flagged
+- Which rule or detector triggered it
+- Severity classification (low, medium, high)
+- Associated ECU and signal source
+
+### System Value
+
+This project demonstrates how traditional automotive CAN systems can be extended with:
+
+- Real-time intrusion detection
+- Behavioral anomaly analysis
+- Attack lifecycle reconstruction
+- Interpretable security decision-making
+
+The architecture is aligned with modern automotive cybersecurity research focusing on explainable and intelligent IDS systems.
