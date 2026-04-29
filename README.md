@@ -63,3 +63,37 @@ Handles:
 - Alert generation
 - Event logging
 - Blocking malicious activity
+
+## Detection Capabilities
+
+The IDS analyzes CAN traffic for malicious patterns using multiple detection strategies.
+
+### RPM Spike Detection
+Detects sudden abnormal increases or decreases in engine RPM that indicate spoofed engine telemetry.
+
+### Frequency-Based Anomaly Detection
+Monitors CAN message transmission frequency to identify:
+
+- Flooding attacks
+- Message injection attempts
+- Timing irregularities
+
+### Attack Correlation
+Correlates multiple suspicious events into larger attack campaigns.
+
+This enables detection of:
+
+- Multi-stage attacks
+- Coordinated spoofing behavior
+- Escalating attack sequences
+
+### Session Tracking
+Groups related anomalies into attack sessions for forensic analysis.
+
+### Explainable Alerts
+Every alert includes reasoning describing:
+
+- Trigger condition
+- Detection logic
+- Severity classification
+- Recommended interpretation
