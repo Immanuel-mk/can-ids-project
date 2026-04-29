@@ -23,6 +23,14 @@ The system is designed for **cybersecurity research, academic evaluation, and po
 
 The simulated automotive environment consists of multiple Electronic Control Units (ECUs) communicating over a virtual CAN bus.
 
+### Architecture Flow
+
+ECUs → CAN Bus → IDS Monitoring → Detection Engine → Correlation Layer → Explainability → Visualization
+
+### Architecture Diagram
+
+![CAN IDS Architecture](docs/diagrams/architecture.png)
+
 ### Core Components
 
 ### Engine ECU
@@ -106,7 +114,7 @@ Every alert includes reasoning describing:
 
 Initialize the simulated CAN bus environment:
 
-```bash
+
 bash scripts/start_vcan.sh
 
 To stop the virtual CAN interface:
