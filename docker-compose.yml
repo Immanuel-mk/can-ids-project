@@ -1,0 +1,8 @@
+version: "3.8"
+
+services:
+  can-ids:
+    build: .
+    container_name: can_ids_sim
+    privileged: true
+    network_mode: host

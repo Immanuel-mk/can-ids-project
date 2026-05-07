@@ -1,7 +1,8 @@
-"""Launch the full CAN ECU simulation with IDS and attack injection.
+"""
+Launch the full CAN ECU simulation with IDS and attack injection.
 
-This runner starts the engine, brake, gateway, and attack ECUs together with
-the IDS and coordinates clean shutdown on user interrupt.
+This runner starts all ECUs, IDS, and attack simulation, and ensures
+clean, idempotent shutdown on Ctrl+C.
 """
 
 from src.ecu.engine_ecu import EngineECU
@@ -23,14 +24,43 @@ def main():
     ids = CANIDS()
 
     # -----------------------------
-    # Inject IDS into ECUs (FIXED)
+    # Inject IDS into ECUs
     # -----------------------------
     engine_ecu.ids = ids
     brake_ecu.ids = ids
     gateway_ecu.ids = ids
 
     # -----------------------------
-    # Start all components
+    # Track shutdown state (FIX)
+    # -----------------------------
+    shutdown_initiated = False
+
+    def shutdown():
+        nonlocal shutdown_initiated
+
+        if shutdown_initiated:
+            return  # prevents double stop
+        shutdown_initiated = True
+
+        print("\n[SYSTEM] Stopping ECUs...")
+
+        # Stop attack first (important)
+        attack_ecu.stop()
+        ids.stop()
+
+        engine_ecu.stop()
+        brake_ecu.stop()
+        gateway_ecu.stop()
+
+        # Join threads safely
+        engine_ecu.join()
+        brake_ecu.join()
+        gateway_ecu.join()
+
+        print("[SYSTEM] Shutdown complete.")
+
+    # -----------------------------
+    # Start system
     # -----------------------------
     engine_ecu.start()
     brake_ecu.start()
@@ -45,28 +75,12 @@ def main():
             time.sleep(1)
 
     except KeyboardInterrupt:
-        print("\n[SYSTEM] Stopping ECUs...")
+        shutdown()
 
-        # -----------------------------
-        # STOP ORDER MATTERS
-        # -----------------------------
-        attack_ecu.stop()
-        ids.stop()
-
-        engine_ecu.stop()
-        brake_ecu.stop()
-        gateway_ecu.stop()
-
-        # -----------------------------
-        # JOIN THREADS
-        # -----------------------------
-        engine_ecu.join()
-        brake_ecu.join()
-        gateway_ecu.join()
-
-        print("[SYSTEM] Shutdown complete.")
+    finally:
+        # Safety net in case of unexpected exit
+        shutdown()
 
 
 if __name__ == "__main__":
     main()
-

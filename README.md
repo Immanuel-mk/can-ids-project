@@ -19,6 +19,32 @@ It integrates:
 
 The system is designed for **cybersecurity research, academic evaluation, and portfolio demonstration** in automotive security domains.
 
+## 🚀 Quick Start (Fresh Clone)
+
+### 1. Clone repository
+```bash
+    git clone <your-repo-url>
+    cd can-ids-project
+
+### Install dependencies
+    pip install -r requirements.txt
+
+### Setup CAN virtual interface (Linux only)
+    chmod +x setup_vcan.sh
+    ./setup_vcan.sh
+
+### Run the system
+    chmod +x run.sh
+    ./run.sh
+
+### Alternative (manual run)
+    python -m src.ecu.runner
+###  Save and exit
+
+    - Press `CTRL + X`
+    - Press `Y`
+    - Press `ENTER`
+
 ## System Architecture
 
 The simulated automotive environment consists of multiple Electronic Control Units (ECUs) communicating over a virtual CAN bus.
